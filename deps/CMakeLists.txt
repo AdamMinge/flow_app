@@ -10,7 +10,7 @@ macro(pillar_setup_dependency directory dependency)
                  @ONLY)
 
   execute_process(
-    COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+    COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" . -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     RESULT_VARIABLE result
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${dependency})
   if(result)
@@ -19,7 +19,7 @@ macro(pillar_setup_dependency directory dependency)
 
   if(NOT EXISTS ${directory}/${dependency}/src/${dependency}-install)
     execute_process(
-      COMMAND ${CMAKE_COMMAND} --build .
+      COMMAND ${CMAKE_COMMAND} --build . --config ${CMAKE_BUILD_TYPE}
       RESULT_VARIABLE result
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${dependency})
     if(result)

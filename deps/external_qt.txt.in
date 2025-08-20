@@ -20,9 +20,9 @@ include(ExternalProject)
 ExternalProject_Add(
     qt
     URL                         
-        https://download.qt.io/official_releases/qt/6.8/6.8.0/single/qt-everywhere-src-6.8.0.tar.xz
+        https://download.qt.io/official_releases/qt/6.9/6.9.0/single/qt-everywhere-src-6.9.0.tar.xz
     URL_MD5                     
-        ce8676e8302d82c7e80ae0f1a316c132
+        6c3e4eceffe8a0e76c7a89a74d33be00
     PREFIX                      
         ${prefix_dir}
     BUILD_IN_SOURCE             
@@ -38,9 +38,10 @@ ExternalProject_Add(
     BUILD_COMMAND               
         ${CMAKE_COMMAND} 
         --build .
+        --config ${CMAKE_BUILD_TYPE}
     INSTALL_COMMAND             
         ${CMAKE_COMMAND} 
-        --build . 
+        --build .
         --target install
     TEST_COMMAND                
         "")
